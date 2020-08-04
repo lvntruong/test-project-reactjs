@@ -13,7 +13,7 @@ const App = (_) => {
 
   const handlePullData = () => {
     axios
-      .get("https://jsonplaceholder.typicode.com/comments")
+      .get("http://localhost:3001")
       .then(function (response) {
         // handle success
         setData(response.data);

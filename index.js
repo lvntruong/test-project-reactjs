@@ -9,7 +9,7 @@ const axios = require('axios')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(cors())
+app.options('*', cors())
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
