@@ -8,6 +8,10 @@ const App = (_) => {
   const [index, setIndex] = useState(null);
 
   useEffect(() => {
+    handlePullData();
+  }, []);
+
+  const handlePullData = () => {
     axios
       .get("https://jsonplaceholder.typicode.com/comments")
       .then(function (response) {
@@ -21,15 +25,15 @@ const App = (_) => {
       .then(function () {
         // always executed
       });
-  }, []);
+  };
 
   const handleRemoveComment = () => {
     if (index) {
       const newData = [...data];
       newData.splice(index, 1);
-      setData(newData)
+      setData(newData);
     }
-  }
+  };
 
   return (
     <BrowserRouter>
@@ -39,15 +43,19 @@ const App = (_) => {
           <div>
             <img src={DevTestImage} />
           </div>
-          <div className="box">
-            {data.map((_comment, _index) => (
-              <p key={_comment.id} title={_comment.name}>
-                {_index}: {_comment.email}
-              </p>
-            ))}
-          </div>
+          {data.length ? (
+            <div className="box">
+              {data.map((_comment, _index) => (
+                <p key={_comment.id} title={_comment.name}>
+                  {_index}: {_comment.email}
+                </p>
+              ))}
+            </div>
+          ) : (
+            "Loading..."
+          )}
           <div>
-            <button>Pull Data</button>
+            <button onClick={handlePullData}>Pull Data</button>
           </div>
           <div>
             <input type="text" onChange={(e) => setIndex(e.target.value)} />
