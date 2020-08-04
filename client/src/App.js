@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { connect } from "react-redux";
-import axios from "axios";
 import { BrowserRouter } from "react-router-dom";
 import DevTestImage from "./assets/images/dev-test-img.svg";
 import { removeComment, reloadComment } from "./actions";
