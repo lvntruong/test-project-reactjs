@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/ktruo010/full-stack-test-template#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "concurrently": "^5.2.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
     "standard": "^14.3.4"
