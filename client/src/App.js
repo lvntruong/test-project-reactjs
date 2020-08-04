@@ -2,29 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import DevTestImage from "./assets/images/dev-test-img.svg";
-import { removeComment, reloadComment } from "./actions";
+import { reloadComment } from "./actions";
+import CommentActions from "./components/comment-actions";
 
 const App = (props) => {
   const dispatch = useDispatch();
 
-  const [index, setIndex] = useState(null);
-
   useEffect(() => {
     handlePullData();
   }, []);
-
-  const handleRemoveComment = () => {
-    if (index) {
-      dispatch(removeComment(index));
-    }
-  };
 
   const handlePullData = () => {
     dispatch(reloadComment());
   };
 
   const comments = useSelector((state) => state.comments);
-  console.log(comments);
 
   return (
     <BrowserRouter>
@@ -45,13 +37,7 @@ const App = (props) => {
           ) : (
             "Loading..."
           )}
-          <div>
-            <button onClick={handlePullData}>Pull Data</button>
-          </div>
-          <div>
-            <input type="number" onChange={(e) => setIndex(e.target.value)} />
-            <button onClick={handleRemoveComment}>Remove</button>
-          </div>
+          <CommentActions handlePullData={handlePullData} />
         </div>
       </div>
     </BrowserRouter>
