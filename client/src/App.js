@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import DevTestImage from "./assets/images/dev-test-img.svg";
 import { reloadComment } from "./actions";
 import CommentActions from "./components/comment-actions";
+import CommentsList from "./components/comments-list";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -26,17 +27,7 @@ const App = (props) => {
           <div>
             <img src={DevTestImage} />
           </div>
-          {comments.length ? (
-            <div className="box">
-              {comments.map((_comment, _index) => (
-                <p key={_comment.id} title={_comment.name}>
-                  {_index}: {_comment.email}
-                </p>
-              ))}
-            </div>
-          ) : (
-            "Loading..."
-          )}
+          <CommentsList comments={comments} />
           <CommentActions handlePullData={handlePullData} />
         </div>
       </div>
